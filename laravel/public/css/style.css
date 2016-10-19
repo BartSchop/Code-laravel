@@ -1,0 +1,21 @@
+.sidebar
+{
+	width: 19% ;
+	margin-left: 7%;
+	float: left;
+	top: 140px ;
+	height: auto ;
+	margin-bottom: 22px;
+}
+.content
+{
+	width: 60% ;
+	margin-right: 10% ;
+	float: right;
+	text-align: center;
+}
+.panel-size-fix
+{
+	width: 170%;
+    margin-left: -45%;
+}

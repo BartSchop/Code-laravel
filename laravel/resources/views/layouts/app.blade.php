@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -48,17 +50,48 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->first_name }} {{ Auth::user()->last_name }} <span class="caret"></span>
-                                </a>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               Boss Guides <span class="caret"></span> 
+                            </a>
 
-                                <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/corporeal_beast') }}">
+                                        Corporeal Beast
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/kalphite_king') }}">
+                                        Kalphite King
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/gwd1') }}">
+                                        Godwars Dungeon I
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ url('/gwd2') }}">
+                                        Godwars Dungeon II
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Authentication Links -->
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               @if (Auth::guest())
+                                    Login or Register
+                               @else
+                                    <i class="fa fa-user"></i>&nbsp;{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                               @endif <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                @if (Auth::guest())
+                                    <li><a href="{{ url('/login') }}">Login</a></li>
+                                    <li><a href="{{ url('/register') }}">Register</a></li>
+                                @else
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -70,15 +103,57 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>
-                            </li>
-                        @endif
+                                    <li><a href="{{ url('/user') }}">Your Profile</a></li>
+                                @endif
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
 
         @yield('content')
+        <div class="sidebar">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Sidebar</div>
+
+                        <div class="panel-body">
+                            <ul>
+                                <li>
+                                    1
+                                </li>
+                                <li>
+                                    2
+                                </li>
+                                <li>
+                                    3
+                                </li>
+                                <li>
+                                    4
+                                </li>
+                                <li>
+                                    5
+                                </li>
+                                <li>
+                                    6
+                                </li>
+                                <li>
+                                    7
+                                </li>
+                                <li>
+                                    8
+                                </li>
+                                <li>
+                                    9
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

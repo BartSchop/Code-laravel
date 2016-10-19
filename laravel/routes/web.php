@@ -12,13 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+Route::get('/corporeal_beast', 'BossGuideController@corporeal_beast');
+Route::get('/kalphite_king', 'BossGuideController@kalphite_king');
