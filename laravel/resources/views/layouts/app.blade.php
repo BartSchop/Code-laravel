@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="stylesheet" href="/css/web.css">
     <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
     <!-- Scripts -->
@@ -38,7 +38,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        RuneStuff
                     </a>
                 </div>
 
@@ -51,32 +51,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                               Boss Guides <span class="caret"></span> 
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ url('/corporeal_beast') }}">
-                                        Corporeal Beast
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/kalphite_king') }}">
-                                        Kalphite King
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/gwd1') }}">
-                                        Godwars Dungeon I
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ url('/gwd2') }}">
-                                        Godwars Dungeon II
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="/boss_guides">Boss Guides</a>
                         </li>
                         <!-- Authentication Links -->
                         <li class="dropdown">
@@ -111,51 +86,47 @@
                 </div>
             </div>
         </nav>
-
         @yield('content')
-        <div class="sidebar">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Sidebar</div>
 
-                        <div class="panel-body">
-                            <ul>
-                                <li>
-                                    1
-                                </li>
-                                <li>
-                                    2
-                                </li>
-                                <li>
-                                    3
-                                </li>
-                                <li>
-                                    4
-                                </li>
-                                <li>
-                                    5
-                                </li>
-                                <li>
-                                    6
-                                </li>
-                                <li>
-                                    7
-                                </li>
-                                <li>
-                                    8
-                                </li>
-                                <li>
-                                    9
-                                </li>
-                            </ul>
+        @if ($boss_info)
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default panel-size-fix">
+                            <div class="panel-heading">{{ $boss_info->name }}</div>
+
+                            <div class="panel-body">
+                                <img class="boss-image" src="{{ URL::to('/') }}/img/{{ $boss_info->title }}.png">
+                                <div class="boss-info">
+                                    <h4>Information</h4>
+                                    <ul class="boss-info-menu">
+                                        <li>Name: {{ $boss_info->name }}</li>
+                                        <li>Level: {{ $boss_info->level }}</li>
+                                        <li>LifePoints: {{ $boss_info->lifepoints }}</li>
+                                        <li>Aggressive: {{ $boss_info->aggressive }}</li>
+                                        <li>Poisonous: {{ $boss_info->poisonous }}</li>
+                                        <li>Weakness: {{ $boss_info->weakness }}</li>
+                                    </ul>
+                                </div>
+                                <div class="boss-reqs">
+                                    <h4>Requirements</h4>
+                                    <ul class="boss-reqs-menu">
+                                        <li>{{ $boss_reqs->req1 }}</li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            <div class="boss-content">
+                                <hr>
+                                @yield('about')
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        @endif
     </div>
-
+</div>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 </body>

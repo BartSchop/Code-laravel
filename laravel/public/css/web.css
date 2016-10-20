@@ -1,0 +1,44 @@
+.boss-info-menu li
+{
+	list-style: none ;
+	margin-left: -26% ;
+}
+.boss-reqs-menu li
+{
+	list-style: none ;
+	margin-left: -40% ;
+}
+.boss-content
+{
+	float : left;
+}
+.boss-image-2
+{
+	max-height: 150px ;
+	max-width: 150px ;
+	padding: 5px ;
+}
+.boss-image
+{
+	max-width: 250px ;
+	max-height: 250px ;
+	float: left ;
+}
+.boss-info
+{
+	float: left ;
+}
+.boss-reqs
+{
+	float: left ;
+}
+.boss-info-panel
+{
+	float: left ;
+	width : 49% ;
+	border: 1px solid black;
+    border-radius: 20px ;
+	text-align: inline ;
+	height: 190px ;
+	margin: 0.5% ;
+}

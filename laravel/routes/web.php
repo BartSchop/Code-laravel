@@ -17,7 +17,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/{name}/{id}', 'BossGuideController@getSingle');
 
-Route::get('/corporeal_beast', 'BossGuideController@corporeal_beast');
-Route::get('/kalphite_king', 'BossGuideController@kalphite_king');
+Route::get('/boss_guides', 'BossGuideController@index');

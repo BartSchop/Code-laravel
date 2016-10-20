@@ -1,9 +1,9 @@
 @extends('layouts.app')
-
+{{ $boss_info = false }}
 @section('content')
 <div class="container content">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default panel-size-fix">
                 <div class="panel-heading">Welcome</div>
 
