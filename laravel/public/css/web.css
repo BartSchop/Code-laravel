@@ -1,22 +1,24 @@
-.boss-info-menu li
-{
-	list-style: none ;
-	margin-left: -26% ;
-}
-.boss-reqs-menu li
-{
-	list-style: none ;
-	margin-left: -40% ;
-}
 .boss-content
 {
 	float : left;
 }
 .boss-image-2
 {
-	max-height: 150px ;
-	max-width: 150px ;
+	height: 200px ;
+	max-width: 200px ;
 	padding: 5px ;
+}
+@media screen and (max-width: 600px) {
+    .boss-image-2 {
+       max-width: 125px ;
+       height: 125px ;
+    }
+}
+@media screen and (max-width: 380px) {
+    .boss-image-2 {
+       max-width: 100px ;
+       height: 100px ;
+    }
 }
 .boss-image
 {
@@ -35,10 +37,36 @@
 .boss-info-panel
 {
 	float: left ;
-	width : 49% ;
-	border: 1px solid black;
-    border-radius: 20px ;
+	width : 30% ;
 	text-align: inline ;
 	height: 190px ;
-	margin: 0.5% ;
+	margin: 1.5% ;
+	margin-top: 5% ;
+	text-align: center ;
+}
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+a
+{
+	color: #636b6f ;
+}
+a:hover
+{
+	color: #636b6f ;
+	text-decoration: none ;
+}
+.move-fix
+{
+	margin-left: 14% ;
 }

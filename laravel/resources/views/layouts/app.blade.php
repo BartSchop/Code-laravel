@@ -98,7 +98,7 @@
                             <div class="panel-body">
                                 <img class="boss-image" src="{{ URL::to('/') }}/img/{{ $boss_info->title }}.png">
                                 <div class="boss-info">
-                                    <h4>Information</h4>
+                                    <h4 class="move-fix">Information</h4>
                                     <ul class="boss-info-menu">
                                         <li>Name: {{ $boss_info->name }}</li>
                                         <li>Level: {{ $boss_info->level }}</li>
@@ -109,7 +109,7 @@
                                     </ul>
                                 </div>
                                 <div class="boss-reqs">
-                                    <h4>Requirements</h4>
+                                    <h4 class="move-fix">Requirements</h4>
                                     <ul class="boss-reqs-menu">
                                         <li>{{ $boss_reqs->req1 }}</li>
                                         <li></li>
