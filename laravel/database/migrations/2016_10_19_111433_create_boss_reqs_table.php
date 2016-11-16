@@ -16,13 +16,7 @@ class CreateBossReqsTable extends Migration
         Schema::create('boss_reqs', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title')->unique();
-            $table->string('req1');
-            $table->string('req2');
-            $table->string('req3');
-            $table->string('req4');
-            $table->string('req5');
-            $table->string('req6');
-            $table->string('req7');
+            $table->string('reqs');
         });
     }
 

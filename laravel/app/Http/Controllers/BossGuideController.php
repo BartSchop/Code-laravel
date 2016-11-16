@@ -11,7 +11,8 @@ class BossGuideController extends Controller
 {
 	public function index()
 	{
-		return view('/bossGuide/index');
+		$boss_names = boss_info::all();
+		return view('/bossGuide/index', compact('boss_names', 'user'));
 	}
 
     public function getSingle($name, $id)
@@ -19,5 +20,10 @@ class BossGuideController extends Controller
     	$boss_info = boss_info::findOrFail($id);
     	$boss_reqs = boss_reqs::findOrFail($id);
     	return view("/bossGuide/$name", compact('boss_info', 'boss_reqs'));
+    }
+
+    public function terms()
+    {
+        return view('terms');
     }
 }

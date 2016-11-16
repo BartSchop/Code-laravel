@@ -22,6 +22,7 @@ class CreateBossInfoTable extends Migration
             $table->string('aggressive');
             $table->string('poisonous');
             $table->string('weakness');
+            $table->string('type');
         });
     }
 
