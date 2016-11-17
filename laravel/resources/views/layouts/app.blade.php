@@ -23,6 +23,7 @@
     </script>
 </head>
 <body>
+    {{ $boss_info = false }}
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -52,6 +53,12 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
                             <a href="/boss_guides">Boss Guides</a>
+                        </li>
+                        <li>
+                            <a href="/player_tracker/index">Player Tracker</a>
+                        </li>
+                        <li>
+                            <a href="/HiScores">HiScores</a>
                         </li>
                         <!-- Authentication Links -->
                         <li class="dropdown">
