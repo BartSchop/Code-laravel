@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/web.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -21,6 +23,7 @@
     </script>
 </head>
 <body>
+    {{ $boss_info = false }}
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -36,7 +39,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        RuneStuff
                     </a>
                 </div>
 
@@ -48,17 +51,29 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="/boss_guides">Boss Guides</a>
+                        </li>
+                        <li>
+                            <a href="/player_tracker/index">Player Tracker</a>
+                        </li>
+                        <li>
+                            <a href="/HiScores">HiScores</a>
+                        </li>
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Login</a></li>
-                            <li><a href="{{ url('/register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               @if (Auth::guest())
+                                    Login or Register
+                               @else
+                                    <i class="fa fa-user"></i>&nbsp;{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}
+                               @endif <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                @if (Auth::guest())
+                                    <li><a href="{{ url('/login') }}">Login</a></li>
+                                    <li><a href="{{ url('/register') }}">Register</a></li>
+                                @else
                                     <li>
                                         <a href="{{ url('/logout') }}"
                                             onclick="event.preventDefault();
@@ -70,17 +85,55 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>
-                            </li>
-                        @endif
+                                    <li><a href="{{ url('/user') }}">Your Profile</a></li>
+                                @endif
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         @yield('content')
-    </div>
 
+        @if ($boss_info)
+            <div class="container content">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="panel panel-default panel-size-fix">
+                            <div class="panel-heading">{{ $boss_info->name }}</div>
+
+                            <div class="panel-body">
+                                <img class="boss-image" src="{{ URL::to('/') }}/img/{{ $boss_info->title }}.png">
+                                <div class="boss-info">
+                                    <h4 class="move-fix">Information</h4>
+                                    <ul class="boss-info-menu">
+                                        <li>Name: {{ $boss_info->name }}</li>
+                                        <li>Level: {{ $boss_info->level }}</li>
+                                        <li>LifePoints: {{ $boss_info->lifepoints }}</li>
+                                        <li>Aggressive: {{ $boss_info->aggressive }}</li>
+                                        <li>Poisonous: {{ $boss_info->poisonous }}</li>
+                                        <li>Weakness: {{ $boss_info->weakness }}</li>
+                                    </ul>
+                                </div>
+                                <div class="boss-reqs">
+                                    <h4 class="move-fix">Requirements</h4>
+                                    <ul class="boss-reqs-menu">
+                                        <li>{{ $boss_reqs->req1 }}</li>
+                                        <li></li>
+                                        <li></li>
+                                    </ul>
+                                </div>
+                            <div class="boss-content">
+                                <hr>
+                                @yield('about')
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </div>
+</div>
     <!-- Scripts -->
     <script src="/js/app.js"></script>
 </body>
