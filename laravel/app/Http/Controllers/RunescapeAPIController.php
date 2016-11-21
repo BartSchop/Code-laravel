@@ -10,6 +10,33 @@ use Illuminate\Support\Facades\Auth;
 
 class RunescapeAPIController extends Controller
 {
+	public function playerdata($name)
+	{
+		$playerinfo = file_get_contents("http://services.runescape.com/m=hiscore/index_lite.ws?player=$name");
+		$rank = array();
+		$skills = array('Skill', 'Total', 'Attack', 'Defence', 'Strenght', 'Constitution', 'Ranged', 'Prayer', 'Magic', 'Cooking', 'Woodcutting', 'Fletching', 'Fishing', 'Firemaking', 'Crafting', 'Smithing', 'Mining', 'Herblore', 'Agility', 'Thieving', 'Slayer', 'Farming', 'Runecrafting', 'Hunter', 'Construction', 'Summoning', 'Dungeoneering', 'Divination', 'Invention');
+		$data = preg_split('/[\s]+/', $playerinfo);
+
+			for ($pop=0; $pop<25 ; $pop++) { 
+	    		array_pop($data);
+	    	}
+	    	$number = 0;
+	    	foreach ($data as $data1) {
+	    		$data2 = preg_split('/[\s,]+/', $data1);
+	    		$number = $number + 1;
+	    		$array = array(
+	    			'Type' => $skills[$number],
+		    		'Rank' => $data2[0],
+		    		'Level' => $data2[1],
+		    		'Xp' => $data2[2]
+		    	);
+
+		    	array_push($rank, $array);
+	    	}
+		$data = json_encode($rank);
+		return $data;
+	}
+
     public function HiScores()
     {
     	$input = request::all();

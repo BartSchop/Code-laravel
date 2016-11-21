@@ -31,6 +31,7 @@ Route::get('/player_tracker/{action}', 'RuneScapeAPIController@player_tracker_in
 Route::post('/start_player_tracker/{action}', 'RuneScapeAPIController@player_tracker_index');
 Route::get('/update_player_tracker/{action}', 'RuneScapeAPIController@player_tracker_index');
 Route::get('/reset_player_tracker/{action}', 'RuneScapeAPIController@player_tracker_index');
+Route::get('/playerinfo/{name}', 'RuneScapeAPIController@playerdata');
 
 //Clan routes
 Route::get('your_clan', 'ClanController@index');
